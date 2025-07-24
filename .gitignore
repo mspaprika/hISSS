@@ -1,41 +1,103 @@
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Linker files
+# ========================
+# Build system artifacts
+# ========================
+bin/
+Bin/
+build/
+Build/
+out/
+Out/
+intermediate/
+obj/
+Obj/
+temp/
+Temp/
+*.make
+*.makefile
+*.ninja
+*.sln
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
+*.vcxproj*
+*.csproj*
+*.user
+*.suo
+*.ipch
+*.db
+*.log
+*.tlog
+*.lastbuildstate
+*.idb
+*.pdb
 *.ilk
 
-# Debugger Files
-*.pdb
+# ========================
+# Premake5-generated files
+# ========================
+Makefile
+*.make
+*.workspace
+*.project
+*.solution
+*.vcxproj*
+*.filters
+*.sln
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+# ========================
+# Visual Studio folders
+# ========================
+.vs/
+*.vspscc
+*.vssscc
 
-# Fortran module files
-*.mod
-*.smod
+# ========================
+# OS / Environment
+# ========================
+.DS_Store
+Thumbs.db
+desktop.ini
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+# ========================
+# Python tools (if using Python scripts)
+# ========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.env
+.venv/
+env/
+venv/
 
-# Executables
-*.exe
-*.out
-*.app
+# ========================
+# Logs & temp files
+# ========================
+*.log
+*.tmp
+*.bak
+*.old
 
-# debug information files
-*.dwo
+# ========================
+# Other IDEs/editors
+# ========================
+.idea/
+*.code-workspace
+*.vscode/
+
+# ========================
+# Ignore generated files from external tools
+# ========================
+*.generated.*
+*.g.*
+*.moc.*
+
+# ========================
+# Ignore archives
+# ========================
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
