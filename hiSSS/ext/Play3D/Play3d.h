@@ -2118,7 +2118,7 @@ namespace Play3d::Graphics
 		using Type = u32;
 		enum Enum
 		{
-			DEBUG = 0x1,
+			DEBUG_FLAG = 0x1,
 			SOURCE_FILE = 0x2,
 			DISABLE_STANDARD_MACROS = 0x4,
 			ADD_RUNTIME_COMPILE_MACRO = 0x8
@@ -8054,7 +8054,7 @@ namespace Play3d::Graphics
 		ShaderCompilerDesc compilerOptions = {};
 		compilerOptions.m_name = "SplitBRDFLUTShader";
 		compilerOptions.m_type = ShaderType::COMPUTE_SHADER;
-		compilerOptions.m_flags = ShaderCompilationFlags::DEBUG | ShaderCompilationFlags::DISABLE_STANDARD_MACROS;
+		compilerOptions.m_flags = ShaderCompilationFlags::DEBUG_FLAG | ShaderCompilationFlags::DISABLE_STANDARD_MACROS;
 		compilerOptions.m_hlslCode = HLSL_SplitBRDFLUT;
 		compilerOptions.m_entryPoint = "CS_Main";
 
@@ -8347,7 +8347,7 @@ namespace Play3d::Graphics
 			Graphics::ShaderCompilerDesc compilerOptions = {};
 			compilerOptions.m_name = shaderName;
 			compilerOptions.m_type = Graphics::ShaderType::VERTEX_SHADER;
-			compilerOptions.m_flags = (u32)Graphics::ShaderCompilationFlags::DEBUG
+			compilerOptions.m_flags = (u32)Graphics::ShaderCompilationFlags::DEBUG_FLAG
 									  | (u32)Graphics::ShaderCompilationFlags::ADD_RUNTIME_COMPILE_MACRO;
 			compilerOptions.m_hlslCode = hlslCode;
 			compilerOptions.m_entryPoint = "VS_Main";
@@ -8362,7 +8362,7 @@ namespace Play3d::Graphics
 			Graphics::ShaderCompilerDesc compilerOptions = {};
 			compilerOptions.m_name = shaderName;
 			compilerOptions.m_type = Graphics::ShaderType::PIXEL_SHADER;
-			compilerOptions.m_flags = (u32)Graphics::ShaderCompilationFlags::DEBUG
+			compilerOptions.m_flags = (u32)Graphics::ShaderCompilationFlags::DEBUG_FLAG
 									  | (u32)Graphics::ShaderCompilationFlags::ADD_RUNTIME_COMPILE_MACRO;
 			compilerOptions.m_hlslCode = hlslCode;
 			compilerOptions.m_entryPoint = "PS_Main";
@@ -9390,7 +9390,7 @@ namespace Play3d::Graphics
 		}
 
 		UINT flags = D3DCOMPILE_ENABLE_STRICTNESS;
-		if (rDesc.m_flags & ShaderCompilationFlags::DEBUG)
+		if (rDesc.m_flags & ShaderCompilationFlags::DEBUG_FLAG)
 		{
 			flags |= D3DCOMPILE_DEBUG;
 		}

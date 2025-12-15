@@ -1,8 +1,8 @@
 #pragma once
-#include "../Core.h"
+#include "../HSheaderLib/Core.h"
 
 
-namespace Hisss::System
+namespace HS::System
 {
 	class LogManager
 	{

@@ -1,112 +1,90 @@
-workspace "hiSSS"
-    architecture "x64"
-    configurations { "Debug", "Release", "Dist" }
+-------------------------------------------------------------
+-- Name: Nth2 Workspace
+-------------------------------------------------------------
+nth = require "Tools/hisss_premake_module"
 
-outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
-
-project "hiSSS"
-    location "hiSSS"
-    kind "SharedLib"
+-- Top-level workspace premake
+workspace "hiSSS_workspace"
     language "C++"
-    targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+    location("Build/")          -- folder for generated .sln and .vcxproj
+    platforms { "WIN_DX11" }   -- only DX11 / x64
+    configurations { "Debug", "Debug_ASan", "Release" }
 
-    files {
-        "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp"
-    }
-    
-    vpaths {
-        ["Source/hiSSS"] = { "hiSSS/src/hiSSS/**"},
-        ["Source/include"] = { "hiSSS/src/include/**"},
-        ["Source"] = { "hiSSS/src/**" },
-    }
+    -- Absolute path to workspace root
+    local workspace_root = path.getabsolute(".")
+    local hiSSS_include = path.join(workspace_root, "hiSSS/include")
+    includedirs { hiSSS_include, ".", "../" }  -- hiSSS first, then local includes
 
-    includedirs
-    {
-        -- logger
-         "%{prj.name}/ext/Play3D",
-    }
-
-    filter "system:windows"
+    -- Common compiler settings
+    filter {}
         cppdialect "C++20"
-        staticruntime "On"
-        systemversion "latest"
-
-        defines
-        {
-            "HS_PLATFORM_WINDOWS", "HS_BUILD_DLL"
-            -- other macros
-        }
-
-        postbuildcommands
-        {
-            ("{COPY} %{cfg.buildtarget.abspath} %{wks.location}/bin/" .. outputdir .. "/Sandbox")
-        }
-
+        warnings "High"
+        flags { "FatalCompileWarnings", "MultiProcessorCompile" }
+        characterset "Unicode"
 
     filter "configurations:Debug"
-        defines "HS_DEBUG"
-        symbols "On"
+        defines { "DEBUG" }
+
+    filter "configurations:Debug_ASan"
+        defines { "DEBUG_ASAN" }
 
     filter "configurations:Release"
-        defines "HS_RELEASE"
-        optimize "On"
+        defines { "NDEBUG" }
 
-    filter "configurations:Dist"
-        defines "HS_DIST"
-        optimize "On"
 
+-- Include external libraries / projects
+group("Play3D")
+include(path.join("hiSSS/ext/Play3D/premake5.lua"))
+
+group("Engine")
+include("hiSSS/premake5.lua")
+
+group("Game Libs")
+include("SandBoxLib/premake5.lua")
+
+group("Apps")
+include("SandBox/premake5.lua")
+
+---
+
+-------------------------------------------------------------
+-- workspace "hiSSS"
+--     language "C++"
+-- 	platforms {"WIN_DX11"}
+-- 	configurations { "Debug", "Debug_ASan", "Release"}
+
+--     local workspace_root = path.getabsolute(".")  -- your workspace root folder
+--     local hiSSS_include = path.join(workspace_root, "hiSSS/include")
+--     includedirs { hiSSS_include, ".", "../" }  -- hiSSS first, then local includes
+
+--     includedirs { ".", "../" }
     
-project "Sandbox"
-    location "Sandbox"
-    kind "ConsoleApp"
-    language "C++"
-    targetdir ("bin/" .. outputdir .. "/%{prj.name}")
-    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+    
+--     filter{}
+--     language "C++"
+--     cppdialect "C++20"
+--     warnings "High"
+--     flags { "FatalCompileWarnings","MultiProcessorCompile"}
+    
+--     characterset "Unicode"
+--     location("Build/")
+    
+--     filter "configurations:Debug"
+--     defines { "DEBUG"}
+    
 
-    files 
-    {
-        "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp",
-    }
+-- group("Play3D")
+-- include ("hiSSS/ext/Play3D/premake5.lua")
 
-    vpaths
-    {
-        ["Source"] = "Sandbox/src/**",
-    }
+-- group("Engine")
+-- include ("hiSSS/premake5.lua")
 
-    includedirs
-    {
-        -- logger
-        "hiSSS/src/include"
-    }
+-- group("Game Libs")
+-- include ("SandBoxLib/premake5.lua")
 
-    links
-    {
-        "hiSSS"
-    }
+-- group("Apps")
+-- include ("SandBox/premake5.lua")
 
-    filter "system:windows"
-        cppdialect "C++20"
-        staticruntime "On"
-        systemversion "latest"
 
-        defines
-        {
-            "HS_PLATFORM_WINDOWS", 
-            -- macros
-        }
 
-    filter "configurations:Debug"
-        defines "HS_DEBUG"
-        symbols "On"
-
-    filter "configurations:Release"
-        defines "HS_RELEASE"
-        optimize "On"
-
-    filter "configurations:Dist"
-        defines "HS_DIST"
-        optimize "On"
 

@@ -1,7 +1,8 @@
 #include "LogManager.h"
 
 
-namespace Hisss::System
+
+namespace HS::System
 {
 	HS_SINGLETON_IMPLEMENT(LogManager)
 
