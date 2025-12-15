@@ -32,9 +32,26 @@ workspace "hiSSS_workspace"
         defines { "NDEBUG" }
 
 
+	--Vertex Shaders
+	filter { "files:**VS.hlsl" }
+	shadertype "Vertex"
+	shadermodel ("5.0")
+	shaderentry "VSMain"
+	shadervariablename ("g_sh_%%(Filename)")
+	shaderheaderfileoutput ("SandBoxLib/src/GeneratedShaders/PlayShader%%(Filename).h")
+	filter {}
+
+	--Pixel Shaders
+	filter { "files:**PS.hlsl" } 
+	shadertype "Pixel"
+	shadermodel ("5.0")
+	shaderentry "PSMain"
+	shadervariablename ("g_sh_%%(Filename)")
+	shaderheaderfileoutput ("SandBoxLib/src/GeneratedShaders/PlayShader%%(Filename).h")
+	filter {}
+
+
 -- Include external libraries / projects
-group("Play3D")
-include(path.join("hiSSS/ext/Play3D/premake5.lua"))
 
 group("Engine")
 include("hiSSS/premake5.lua")
@@ -44,6 +61,8 @@ include("SandBoxLib/premake5.lua")
 
 group("Apps")
 include("SandBox/premake5.lua")
+
+
 
 ---
 

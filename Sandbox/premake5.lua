@@ -35,8 +35,8 @@ project "SandBoxApp"
 		path.join(workspace_root, "Build/bin/WIN_DX11/Release")
 	}
 	
-	links { "hiSSS", "SandBoxLib", "HSHeaderLib", "HSSystemLib", "Play3D" }
-    dependson { "hiSSS", "SandBoxLib", "HSHeaderLib", "HSSystemLib", "Play3D" }
+	links { "hiSSS", "HSHeaderLib", "HSSystemLib", "SandBoxLib", "Play3D" }
+    dependson { "hiSSS", "HSHeaderLib", "SandBoxLib", "HSSystemLib", "Play3D" }
 	
 	
 	nth.AddMainProjectSettings()

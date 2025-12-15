@@ -6,14 +6,20 @@ project "SandBoxLib"
 	kind "StaticLib"
 	architecture "x64"
 		
-	files {
-		"premake5.lua",
-		"**.cpp",
-		"**.h",
-		"**.natvis"
-	}
+	-- files {
+	-- 	"premake5.lua",
+	-- 	"**.cpp",
+	-- 	"**.h",
+	-- 	"**.natvis"
+	-- }
 	
-	--nth.AddFiles()
+	nth.AddFiles()
+
+	--Add Shader Files
+	files {
+		"**.hlsl",
+		"**.hlsli"
+	}
 	
 	filter "system:windows"
 	cppdialect "C++20"
@@ -34,11 +40,30 @@ project "SandBoxLib"
         path.join(workspace_root, "hiSSS/include/hiSSS/HSSystemLib"),
         path.join(workspace_root, "hiSSS/include/ext/Play3D")
     }
-	-- links 
-	-- {
-	-- 	"Play3D",
-	-- 	"hiSSS", "HSHeaderLib", "HSSystemLib"
-	-- }
+
+	filter {}
+	links 
+	{
+		"Play3D",
+		"hiSSS", "HSHeaderLib", "HSSystemLib"
+	}
+
+		--Vertex Shaders
+	filter { "files:**VS.hlsl" }
+	shadertype "Vertex"
+	shadermodel ("5.0")
+	shaderentry "VSMain"
+	shadervariablename ("g_sh_%%(Filename)")
+	shaderheaderfileoutput ("../SandBoxLib/src/GeneratedShaders/PlayShader%%(Filename).h")
+	filter {}
+
+	--Pixel Shaders
+	filter { "files:**PS.hlsl" } 
+	shadertype "Pixel"
+	shadermodel ("5.0")
+	shaderentry "PSMain"
+	shadervariablename ("g_sh_%%(Filename)")
+	shaderheaderfileoutput ("../SandBoxLib/src/GeneratedShaders/PlayShader%%(Filename).h")
 	
 	
 

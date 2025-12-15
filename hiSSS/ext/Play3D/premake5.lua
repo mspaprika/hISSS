@@ -25,7 +25,7 @@ project "Play3D"
 	shadermodel ("5.0")
 	shaderentry "VSMain"
 	shadervariablename ("g_sh_%%(Filename)")
-	shaderheaderfileoutput ("../PlayBufferDx/PlayShader%%(Filename).h")
+	shaderheaderfileoutput ("PlayShader%%(Filename).h")
 	filter {}
 
 	--Pixel Shaders
@@ -34,7 +34,7 @@ project "Play3D"
 	shadermodel ("5.0")
 	shaderentry "PSMain"
 	shadervariablename ("g_sh_%%(Filename)")
-	shaderheaderfileoutput ("../PlayBufferDx/PlayShader%%(Filename).h")
+	shaderheaderfileoutput ("PlayShader%%(Filename).h")
 	filter {}
 
 	debugdir "."
