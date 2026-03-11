@@ -1,5 +1,5 @@
 #pragma once
-#include "../HSheaderLib/Core.h"
+#include "Core.h"
 
 
 namespace HS::System

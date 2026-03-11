@@ -23,7 +23,7 @@ namespace SB
 		return false; 
 	}
 
-	void Sandbox::OnRender()
+	void Sandbox::OnRender(HS::RenderContext& rCtx)
 	{
 
 	}

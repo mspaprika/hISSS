@@ -36,7 +36,6 @@ project "SandBoxLib"
 	
 	local workspace_root = path.getabsolute("..")
     includedirs {
-        path.join(workspace_root, "hiSSS/include/hiSSS/HSHeaderLib"),
         path.join(workspace_root, "hiSSS/include/hiSSS/HSSystemLib"),
         path.join(workspace_root, "hiSSS/include/ext/Play3D")
     }
@@ -45,7 +44,7 @@ project "SandBoxLib"
 	links 
 	{
 		"Play3D",
-		"hiSSS", "HSHeaderLib", "HSSystemLib"
+		"hiSSS", "HSSystemLib"
 	}
 
 		--Vertex Shaders

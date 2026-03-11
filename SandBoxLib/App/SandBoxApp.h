@@ -1,6 +1,7 @@
 #pragma once
-
 #include <hiSSS.h>
+
+#include "../HSGraphicsLib/RenderContext.h"
 
 
 namespace SB
@@ -13,7 +14,7 @@ namespace SB
 		~Sandbox();
 
 		bool OnUpdate() override;
-		void OnRender() override;
+		void OnRender(HS::RenderContext& rCtx) override;
 		void OnInitialize() override;
 		void OnShutdown() override;
 		

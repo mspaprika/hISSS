@@ -1,5 +1,6 @@
 #pragma once
-//#include "HSheaderLib/Core.h"
+#include "HSSystemLib/Core.h"
+#include "HSGraphicsLib/RenderContext.h"
 
 
 
@@ -13,7 +14,7 @@ namespace HS
 		virtual ~Application();
 
 		virtual bool OnUpdate() = 0;
-		virtual void OnRender() = 0;
+		virtual void OnRender(RenderContext& rCtx) = 0;
 		virtual void OnInitialize() = 0;
 		virtual void OnShutdown() = 0;
 

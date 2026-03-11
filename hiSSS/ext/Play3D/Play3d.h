@@ -62,7 +62,7 @@ namespace Play3d::Debug
 //! @brief Declares a function arguments as unused suppressing a compiler warning.
 #define PLAY_UNUSED(x) (void)x
 
-#ifdef _DEBUG
+#ifdef DEBUG
 //! @brief Asserts a condition is true, reports the condition expression debug console.
 #define PLAY_ASSERT(condition)                                                                                         \
 	if (!(condition))                                                                                                  \
@@ -4345,7 +4345,7 @@ namespace Play3d::Audio
 		hr = XAudio2Create(&m_pXAudio2, 0, XAUDIO2_DEFAULT_PROCESSOR);
 		PLAY_ASSERT_MSG(SUCCEEDED(hr), "Failed XAudio create.");
 
-#ifdef _DEBUG
+#ifdef DEBUG
 		XAUDIO2_DEBUG_CONFIGURATION debugConfig = {};
 		debugConfig.TraceMask = XAUDIO2_LOG_ERRORS;
 		debugConfig.BreakMask = XAUDIO2_LOG_ERRORS;
@@ -7526,7 +7526,7 @@ namespace Play3d::Graphics
 		HRESULT hr;
 
 		DWORD createDeviceFlags = 0;
-#ifdef _DEBUG
+#ifdef DEBUG
 		createDeviceFlags |= D3D11_CREATE_DEVICE_DEBUG;
 #endif
 
@@ -7737,8 +7737,8 @@ namespace Play3d::Graphics
 	result_t Graphics_Impl::CompileInternalShaders()
 	{
 		u32 compilationFlags = 0;
-#ifdef _DEBUG
-		compilationFlags |= ShaderCompilationFlags::DEBUG;
+#ifdef DEBUG
+		compilationFlags |= ShaderCompilationFlags::DEBUG_FLAG;
 #endif
 
 		{
@@ -7786,8 +7786,8 @@ namespace Play3d::Graphics
 		desc.m_name = pNamePrefix;
 		desc.m_defines.clear();
 		desc.m_flags = 0;
-#ifdef _DEBUG
-		desc.m_flags |= ShaderCompilationFlags::DEBUG;
+#ifdef DEBUG
+		desc.m_flags |= ShaderCompilationFlags::DEBUG_FLAG;
 #endif
 
 		if (key.m_bits.m_pixelShader)
@@ -9073,8 +9073,8 @@ namespace Play3d::Graphics
 
 		{
 			u32 compilationFlags = 0;
-#ifdef _DEBUG
-			compilationFlags |= ShaderCompilationFlags::DEBUG;
+#ifdef DEBUG
+			compilationFlags |= ShaderCompilationFlags::DEBUG_FLAG;
 #endif
 
 			ShaderCompilerDesc desc;
@@ -11324,8 +11324,8 @@ namespace Play3d::Sprite
 
 		{
 			u32 compilationFlags = 0;
-#ifdef _DEBUG
-			compilationFlags |= ShaderCompilationFlags::DEBUG;
+#ifdef DEBUG
+			compilationFlags |= ShaderCompilationFlags::DEBUG_FLAG;
 #endif
 
 			ShaderCompilerDesc desc;
@@ -12601,8 +12601,8 @@ namespace Play3d::UI
 
 		{
 			u32 compilationFlags = 0;
-#ifdef _DEBUG
-			compilationFlags |= ShaderCompilationFlags::DEBUG;
+#ifdef DEBUG
+			compilationFlags |= ShaderCompilationFlags::DEBUG_FLAG;
 #endif
 
 			ShaderCompilerDesc desc;

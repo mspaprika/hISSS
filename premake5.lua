@@ -13,7 +13,8 @@ workspace "hiSSS_workspace"
     -- Absolute path to workspace root
     local workspace_root = path.getabsolute(".")
     local hiSSS_include = path.join(workspace_root, "hiSSS/include")
-    includedirs { hiSSS_include, ".", "../" }  -- hiSSS first, then local includes
+    local play3d_include = path.join(workspace_root, "hiSSS/ext/Play3D")
+    includedirs { hiSSS_include, play3d_include, ".", "../" }  -- hiSSS first, then local includes
 
     -- Common compiler settings
     filter {}

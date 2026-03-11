@@ -30,7 +30,7 @@ project "HSGraphicsLib"
 	
 	local workspace_root = path.getabsolute("..")
     includedirs {
-        path.join(workspace_root, "hiSSS/include/hiSSS/HSHeaderLib"),
+        path.join(workspace_root, "hiSSS/include/hiSSS/HSSystemLib"),
         path.join(workspace_root, "hiSSS/include/ext/Play3D")
     }
 

@@ -65,7 +65,14 @@ project "hiSSS"
 
 group("hiSSS Libs")
 include("include/hiSSS/HSGraphicsLib/premake5.lua")
-include("include/hiSSS/HSHeaderLib/premake5.lua")
 include("include/hiSSS/HSSystemLib/premake5.lua")
+include("include/hiSSS/HSAssetLib/premake5.lua")
+include("include/hiSSS/HSDebugLib/premake5.lua")
+include("include/hiSSS/HSEventLib/premake5.lua")
+include("include/hiSSS/HSImGuiLib/premake5.lua")
+include("include/hiSSS/HSMathLib/premake5.lua")
+include("include/hiSSS/HSPhysicsLib/premake5.lua")
+include("include/hiSSS/HSUILib/premake5.lua")
 include("ext/Play3D/premake5.lua")
+
 
