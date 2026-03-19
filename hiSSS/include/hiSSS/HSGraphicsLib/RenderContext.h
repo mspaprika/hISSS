@@ -49,6 +49,9 @@ namespace HS
 
 		void Clear();
 
+		const std::vector<UIRenderCommand>& GetUICommands() const { return m_vUIRenderCommands; }
+		const std::vector<MeshRenderCommand>& GetMeshCommands() const { return m_vMeshRenderCommands; }
+
 	private:
 		std::vector<UIRenderCommand> m_vUIRenderCommands;
 		std::vector<MeshRenderCommand> m_vMeshRenderCommands;

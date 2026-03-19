@@ -1,5 +1,6 @@
 #include "hiSSS/HSAssetLib/AssetManager.h"
 #include "hiSSS/HSGraphicsLib/Renderer.h"
+#include "hiSSS/HSSystemLib/CameraManager.h"
 
 
 #include "SandBoxApp.h"
@@ -34,8 +35,7 @@ namespace SB
 
 	void Sandbox::OnInitialize()
 	{
-		HS::AssetManager::Instance().PostInitialize();
-		HS::Renderer::Instance().PostInitialize();
+		
 	}
 
 	void Sandbox::OnShutdown()

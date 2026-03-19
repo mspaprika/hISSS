@@ -1,5 +1,6 @@
 
 
+#include "HSSystemLib/CameraManager.h"
 #include "HSGraphicsLib/Renderer.h"
 #include "HSAssetLib/AssetManager.h"
 #include "Application.h"
@@ -24,6 +25,11 @@ namespace HS
 
 		Renderer::Initialize();
 		AssetManager::Initialize();
+		CameraManager::Initialize();
+
+		HS::AssetManager::Instance().PostInitialize();
+		HS::Renderer::Instance().PostInitialize();
+		HS::CameraManager::Instance().PostInitialize();
 
 		OnInitialize();
 	}
@@ -54,6 +60,8 @@ namespace HS
 
 	bool Application::Update(float dT)
 	{
+		HS::CameraManager::Instance().Update();
+
 		return OnUpdate(dT);
 	}
 
