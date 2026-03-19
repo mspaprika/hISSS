@@ -13,13 +13,13 @@ namespace HS
 		Application();
 		virtual ~Application();
 
-		virtual bool OnUpdate() = 0;
-		virtual void OnRender(RenderContext& rCtx) = 0;
+		virtual bool OnUpdate(float dT) = 0;
+		virtual void OnRender() = 0;
 		virtual void OnInitialize() = 0;
 		virtual void OnShutdown() = 0;
 
 		void Init();
-		bool Update();
+		bool Update(float dT);
 		void Render();
 
 		void Run();

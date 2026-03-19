@@ -1,3 +1,7 @@
+#include "hiSSS/HSAssetLib/AssetManager.h"
+#include "hiSSS/HSGraphicsLib/Renderer.h"
+
+
 #include "SandBoxApp.h"
 
 
@@ -14,7 +18,7 @@ namespace SB
 
 	}
 
-	bool Sandbox::OnUpdate()
+	bool Sandbox::OnUpdate(float dT)
 	{ 
 
 
@@ -23,14 +27,15 @@ namespace SB
 		return false; 
 	}
 
-	void Sandbox::OnRender(HS::RenderContext& rCtx)
+	void Sandbox::OnRender()
 	{
 
 	}
 
 	void Sandbox::OnInitialize()
 	{
-
+		HS::AssetManager::Instance().PostInitialize();
+		HS::Renderer::Instance().PostInitialize();
 	}
 
 	void Sandbox::OnShutdown()

@@ -7,7 +7,7 @@
 //#define PLAY_USE_CLIENT_MAIN
 #define PLAY_IMPLEMENTATION
 //#include "../hiSSS/ext/Play3D/Play3D.h"
-#include "../SandboxLib/App/SandBoxApp.h"
+#include "SandboxLib/App/SandBoxApp.h"
 #include <hiSSS.h>
 //#include "../../hiSSS/src/hiSSS/Entry.h"
 

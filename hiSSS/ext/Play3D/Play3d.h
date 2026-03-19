@@ -775,6 +775,11 @@ namespace Play3d
 		return mat;
 	}
 
+	inline TMatrix<4, 4, f32> MatrixIdentity4x4f()
+	{
+		return MatrixIdentity<4, f32>();
+	}
+
 	template <typename T>
 	TMatrix<4, 4, T> MatrixRotationX(const T theta)
 	{

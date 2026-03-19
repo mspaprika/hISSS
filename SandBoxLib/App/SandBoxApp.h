@@ -13,8 +13,8 @@ namespace SB
 	
 		~Sandbox();
 
-		bool OnUpdate() override;
-		void OnRender(HS::RenderContext& rCtx) override;
+		bool OnUpdate(float dT) override;
+		void OnRender() override;
 		void OnInitialize() override;
 		void OnShutdown() override;
 		

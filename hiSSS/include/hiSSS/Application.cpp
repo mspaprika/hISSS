@@ -39,22 +39,28 @@ namespace HS
 		bool bQuit{ false };
 		while (!bQuit)
 		{
-			bQuit = Update();
+			if (System::BeginFrame() != RESULT_OK || Input::IsKeyPressed(VK_ESCAPE))
+			{
+				bQuit = true;
+			}
+
+			f32 dT = System::GetDeltaTime();
+			bQuit = Update(dT);
 			Render();
 
 			System::EndFrame();
 		}
 	}
 
-	bool Application::Update()
+	bool Application::Update(float dT)
 	{
-		return OnUpdate();
+		return OnUpdate(dT);
 	}
 
 	void Application::Render()
 	{
 		auto& ctx = Renderer::Instance().GetRenderContext();
-		OnRender(ctx);
+		OnRender();
 
 		Renderer::Instance().Render();
 	}
