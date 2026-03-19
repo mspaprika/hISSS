@@ -38,10 +38,6 @@ namespace HS
 	{
 		Init();
 
-		/*int x = 0;
-
-		HS_ASSERT(x > 0)*/
-
 		bool bQuit{ false };
 		while (!bQuit)
 		{
@@ -49,10 +45,12 @@ namespace HS
 			{
 				bQuit = true;
 			}
-
-			f32 dT = System::GetDeltaTime();
-			bQuit = Update(dT);
-			Render();
+			else
+			{
+				f32 dT = System::GetDeltaTime();
+				bQuit = Update(dT);
+				Render();
+			}
 
 			System::EndFrame();
 		}
